@@ -130,3 +130,5 @@ print("TIME 4")
 for jogador in time_d:
     print(jogador)
 
+# a
+
