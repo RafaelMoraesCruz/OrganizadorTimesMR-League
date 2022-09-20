@@ -40,9 +40,6 @@ tentativas = 1
 while(True):
     list.sort(key=lambda a: a.forca,reverse=True)
 
-    # for jogador in list:
-    #     print(jogador)
-
     list1.extend(list[0: 4])
     np.random.shuffle(list1)
     list2.extend(list[4: 8])
@@ -53,28 +50,6 @@ while(True):
     np.random.shuffle(list4)
     list5.extend(list[16: 20])
     np.random.shuffle(list5)
-
-    # print("TIER 1")
-    # for jogador in list1:
-    #     print(jogador)
-    # print("_____________________")
-    # print("TIER 2")
-    # for jogador in list2:
-    #     print(jogador)
-    # print("_____________________")
-    # print("TIER 3")
-    # for jogador in list3:
-    #     print(jogador)
-    # print("_____________________")
-    # print("TIER 4")
-    # for jogador in list4:
-    #     print(jogador)
-    # print("_____________________")
-    # print("TIER 5")
-    # for jogador in list5:
-    #     print(jogador)
-    # print("_____________________")
-
 
     time_a = [list1[0],list2[0],list3[0],list4[0],list5[0]]
     soma_a = 0
@@ -99,8 +74,6 @@ while(True):
     for jogador in time_d:
         soma_d += jogador.forca
     media_time_d = soma_d/5
-
-
 
     media_geral = (soma_a + soma_b + soma_c + soma_d) / 20
 
@@ -129,6 +102,5 @@ print("______________")
 print("TIME 4")
 for jogador in time_d:
     print(jogador)
-
 # a
 
