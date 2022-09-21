@@ -14,21 +14,21 @@ list=[]; list5=[]; list4=[];list3=[];list2=[];list1=[]
 
 def adicionar_jogadores():
     list.append(jogador(7,"gandula","reto",99))
-    list.append(jogador(7,"gandula","reto",4))
-    list.append(jogador(7,"gandula","reto",98))
-    list.append(jogador(7,"gandula","reto",4))
-    list.append(jogador(7,"gandula","reto",96))
+    list.append(jogador(7,"gandula","reto",26))
+    list.append(jogador(7,"gandula","reto",50))
+    list.append(jogador(7,"gandula","reto",33))
+    list.append(jogador(7,"gandula","reto",55))
     list.append(jogador(7,"gandula","reto",95))
-    list.append(jogador(7,"gandula","reto",9))
+    list.append(jogador(7,"gandula","reto",21))
     list.append(jogador(7,"gandula","reto",93))
     list.append(jogador(7,"gandula","reto",92))
     list.append(jogador(7,"gandula","reto",91))
-    list.append(jogador(7,"gandula","reto",6))
+    list.append(jogador(7,"gandula","reto",42))
     list.append(jogador(7,"gandula","reto",89))
-    list.append(jogador(7,"gandula","reto",88))
+    list.append(jogador(7,"gandula","reto",45))
     list.append(jogador(7,"gandula","reto",25))
     list.append(jogador(7,"gandula","reto",86))
-    list.append(jogador(7,"gandula","reto",85))
+    list.append(jogador(7,"gandula","reto",76))
     list.append(jogador(7,"gandula","reto",70))
     list.append(jogador(7,"gandula","reto",83))
     list.append(jogador(7,"gandula","reto",82))
@@ -37,6 +37,9 @@ def adicionar_jogadores():
 
 list = adicionar_jogadores()
 tentativas = 1
+
+print(len(list))
+
 while(True):
     list.sort(key=lambda a: a.forca,reverse=True)
 
@@ -51,55 +54,58 @@ while(True):
     list5.extend(list[16: 20])
     np.random.shuffle(list5)
 
-    time_a = [list1[0],list2[0],list3[0],list4[0],list5[0]]
-    soma_a = 0
-    for jogador in time_a:
-        soma_a += jogador.forca
-    media_time_a = soma_a/5
+    def tirar_time(posicao_tier):
+        return [list1[posicao_tier],list2[posicao_tier],list3[posicao_tier],list4[posicao_tier],list5[posicao_tier]]
+    
+    def tirar_media_time(time):
+        soma = 0
+        for jogador in time:
+            soma += jogador.forca
+        return soma / 5
 
-    time_b =[list1[1],list2[1],list3[1],list4[1],list5[1]]
-    soma_b = 0
-    for jogador in time_b:
-        soma_b += jogador.forca
-    media_time_b = soma_b/5
+    time_a = tirar_time(0)
+    media_time_a = tirar_media_time(time_a)
+    time_b = tirar_time(1)
+    media_time_b = tirar_media_time(time_b)
+    time_c = tirar_time(2)
+    media_time_c = tirar_media_time(time_c)
+    time_d = tirar_time(3)
+    media_time_d = tirar_media_time(time_d)
+    media_geral = (media_time_a + media_time_b + media_time_c + media_time_d) / 4
 
-    time_c =[list1[2],list2[2],list3[2],list4[2],list5[2]]
-    soma_c = 0
-    for jogador in time_c:
-        soma_c += jogador.forca
-    media_time_c = soma_c/5
+    list1.clear()
+    list2.clear()
+    list3.clear()
+    list4.clear()
 
-    time_d =[list1[3],list2[3],list3[3],list4[3],list5[3]]
-    soma_d = 0
-    for jogador in time_d:
-        soma_d += jogador.forca
-    media_time_d = soma_d/5
-
-    media_geral = (soma_a + soma_b + soma_c + soma_d) / 20
-
-    if((media_geral + 5 < media_time_a or media_geral - 5 > media_time_a) or 
-    (media_geral + 5 < media_time_b or media_geral - 5 > media_time_b) or 
-    (media_geral + 5 < media_time_c or media_geral - 5 > media_time_c) or 
-    (media_geral + 5 < media_time_d or media_geral - 5 > media_time_d)):
+    if((media_geral + 3 < media_time_a or media_geral - 3 > media_time_a) or 
+    (media_geral + 3 < media_time_b or media_geral - 3 > media_time_b) or 
+    (media_geral + 3 < media_time_c or media_geral - 3 > media_time_c) or 
+    (media_geral + 3 < media_time_d or media_geral - 3 > media_time_d)):
         tentativas += 1
     else:
         print("ok")
         break
+
 print(f"levaram-se {tentativas} tentativas")
 
-print("TIME 2")
+print("TIME 1")
+print(media_time_a)
 for jogador in time_a:
     print(jogador)
 print("______________")
 print("TIME 2")
+print(media_time_b)
 for jogador in time_b:
     print(jogador)
 print("______________")
 print("TIME 3")
+print(media_time_c)
 for jogador in time_c:
     print(jogador)
 print("______________")
 print("TIME 4")
+print(media_time_d)
 for jogador in time_d:
     print(jogador)
 # a
